@@ -1,0 +1,39 @@
+
+
+"05/26/2024","-100.00","Rolf Westby" CAT=Extra Income CMT=Payback for March Trip TAG=REIMBURSABLE USE-FROM NOT-DEBIT
+
+"05/26/2024","20.00","Edina Grill" CAT=Restaurants USE-FROM
+
+
+"05/02/2024","8.00","Turtle Bread Company" CAT=Coffee Shops USE-FROM
+
+"04/25/2024","8.00","Turtle Bread Company" CAT=Coffee Shops USE-FROM
+
+"04/18/2024","8.00","Turtle Bread Company" CAT=Coffee Shops USE-FROM
+
+"04/11/2024","8.00","Turtle Bread Company" CAT=Coffee Shops USE-FROM
+
+"04/06/2024","62.00","Harriet Brasserie" CAT=Restaurants USE-FROM
+
+"04/04/2024","8.00","Turtle Bread Company" CAT=Coffee Shops USE-FROM
+
+"04/01/2024","-200.00","Rolf Westby" CAT=Extra Income CMT=Payback for Plane Tickets TAG=REIMBURSABLE USE-FROM NOT-DEBIT
+
+
+
+"03/28/2024","8.00","Turtle Bread Company" CAT=Coffee Shops USE-FROM
+
+"03/14/2024","8.00","Turtle Bread Company" CAT=Coffee Shops USE-FROM
+
+"03/14/2024","8.00","Turtle Bread Company" CAT=Coffee Shops USE-FROM
+
+
+
+
+"02/29/2024","8.00","Turtle Bread Company" CAT=Coffee Shops USE-FROM
+
+"02/22/2024","8.00","Turtle Bread Company" CAT=Coffee Shops USE-FROM
+
+"02/08/2024","8.00","Turtle Bread Company" CAT=Coffee Shops USE-FROM
+
+"02/01/2024","8.00","Turtle Bread Company" CAT=Coffee Shops USE-FROM
