@@ -13,7 +13,8 @@ public enum AccountEnum {
     CHAS_VISA("Chase VISA", "chase-visa.txt", new ProcChaseVisa(), "E"),
     CITI_MC("Citi MC", "citi-mc.txt", new ProcessCitiMC(), "E"),
     WF_CHK("Wells Fargo Checking", "wf-checking.txt", new ProcWellsFargoCheck(), "E"),
-    WF_VISA("Wells Fargo VISA", "wf-visa.txt", new ProcWellsFargoVisa(), "E");
+    WF_VISA("Wells Fargo VISA", "wf-visa.txt", new ProcWellsFargoVisa(), "E"),
+    WF_ROLF("Wells Fargo Rolf", "wf-rolf.txt", new ProcWellsFargoVisa(), "R");
 
     private String tag, file;
     private ProcessTransFile procFile;
