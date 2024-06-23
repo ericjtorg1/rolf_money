@@ -1,5 +1,9 @@
 
 
+"07/26/2024","20.00","Edina Grill" CAT=Restaurants USE-FROM
+
+
+
 "05/26/2024","-100.00","Rolf Westby" CAT=Extra Income CMT=Payback for March Trip TAG=REIMBURSABLE USE-FROM NOT-DEBIT
 
 "05/26/2024","20.00","Edina Grill" CAT=Restaurants USE-FROM

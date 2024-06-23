@@ -1,0 +1,8 @@
+
+
+
+"05/31/2024","Posted","INTADJUST","","Interest Paid","","$0.04","$93.43"
+"04/30/2024","Posted","INTADJUST","","Interest Paid","","$0.04","$93.39"
+"03/29/2024","Posted","INTADJUST","","Interest Paid","","$0.03","$93.35"
+"02/29/2024","Posted","INTADJUST","","Interest Paid","","$0.03","$93.32"
+"01/31/2024","Posted","INTADJUST","","Interest Paid","","$0.04","$93.29"

@@ -1,0 +1,12 @@
+
+
+
+"2024-06-06","CREDIT","MOBILE CHECK DEPOSIT","Download from usbank.com.","1750.00"
+"2024-06-06","CREDIT","MOBILE CHECK DEPOSIT","Download from usbank.com.","1600.00"
+"2024-06-10","CREDIT","MOBILE CHECK DEPOSIT","Download from usbank.com.","2175.00"
+"2024-06-11","DEBIT","MOBILE BANKING TRANSFER WITHDRAWAL 3348","Download from usbank.com.","-5000.00"
+"2024-06-14","CREDIT","MOBILE CHECK DEPOSIT","Download from usbank.com.","320.00"
+"2024-06-14","DEBIT","MONTHLY MAINTENANCE FEE","Download from usbank.com.","-7.45"
+"2024-06-14","CREDIT","MONTHLY MAINTENANCE FEE WAIVED","Download from usbank.com.","7.45"
+"2024-06-17","CREDIT","MOBILE CHECK DEPOSIT","Download from usbank.com.","50.00"
+"2024-06-17","CREDIT","MOBILE CHECK DEPOSIT","Download from usbank.com.","2.94"

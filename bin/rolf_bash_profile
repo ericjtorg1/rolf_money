@@ -4,16 +4,17 @@ export MAVEN_HOME=/opt/homebrew/Cellar/maven/3.9.8
 
 export LOGS_DIR=$HOME/logs
 
-export PATH=$JAVA_HOME/bin:$HOME/Desktop/money/bin:$MAVEN_HOME/bin:$PATH
+export PATH=$JAVA_HOME/bin:$HOME/Desktop/rolf_money/bin:$MAVEN_HOME/bin:$PATH
 
-alias gotrans='cd $HOME/Desktop/money/ejt2/money/src/main/resources/mint'
-alias godown='cd $HOME/Desktop/money/Money/2024_Statements/trans-files/'
-alias goutil='cd $HOME/Desktop/money/ejt2/util'
-alias gomoney='cd $HOME/Desktop/money/ejt2/money'
+alias gotrans='cd $HOME/Desktop/rolf_money/ejt2/money/src/main/resources/mint'
+alias godown='cd $HOME/Desktop/rolf_money/Money/2024_Statements/trans-files/'
+alias goutil='cd $HOME/Desktop/rolf_money/ejt2/util'
+alias gomoney='cd $HOME/Desktop/rolf_money/ejt2/money'
+alias m24='mint_proctransfiles.sh 2024'
 
 alias kj='killjava.sh'
 alias pj='ps aux | grep java | grep -v grep'
-alias cp_bash='cp $HOME/Desktop/money/bin/rolf_bash_profile $HOME/.bash_profile'
+alias cp_bash='cp $HOME/Desktop/rolf_money/bin/rolf_bash_profile $HOME/.bash_profile'
 
 alias fndb='function _blah(){ grep "$1" *; };_blah'
 

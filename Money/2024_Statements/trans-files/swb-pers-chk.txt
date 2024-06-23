@@ -1,0 +1,9 @@
+
+
+
+"05/31/2024","Posted","INTADJUST","","Interest Paid","","$0.05","$118.65"
+"04/30/2024","Posted","INTADJUST","","Interest Paid","","$0.35","$118.60"
+"04/30/2024","Posted","ACH","","Electronic Withdrawal","$800.00","","$118.25"
+"03/29/2024","Posted","INTADJUST","","Interest Paid","","$0.33","$918.25"
+"02/29/2024","Posted","INTADJUST","","Interest Paid","","$0.33","$917.92"
+"01/31/2024","Posted","INTADJUST","","Interest Paid","","$0.37","$917.59"
