@@ -91,19 +91,6 @@ public class ConvertTransactions {
         List<Transaction> filteredTransList = new ArrayList<Transaction>();
 
         for (Transaction t : transList) {
-            if (t.hasTag(Transaction.Tag.DUPLICATE)) {
-                continue;
-            }
-            if ("TEKsystems 401k".equals(t.getAccount())) {
-                continue;
-            }
-            if ("Hide from Budgets & Trends".equals(t.getCategory())) {
-                continue;
-            }
-            if ("Trade Commissions".equals(t.getCategory())) {
-                continue;
-            }
-
             String date = CalendarUtil.toString(t.getDate(), "MM-dd-yyyy");
             if (!date.endsWith(year)) {
                 continue;

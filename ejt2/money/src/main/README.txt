@@ -23,5 +23,8 @@ mint_proctransfiles.sh 20XX
 # run and fix any issues
 mint_report.sh 20XX
 
+mint_find.sh 20XX E Medical Q1
+mint_find.sh 20XX I "Investments Payout" Q4
+
 
 

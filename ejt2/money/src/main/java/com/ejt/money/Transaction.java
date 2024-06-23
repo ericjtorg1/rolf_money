@@ -56,9 +56,9 @@ public class Transaction {
     }
 
     public enum Tag {
-        VACATION("VACATION"), ALTHEA_EXP("ALTHEA_EXP"), REIMBURSABLE("REIMBURSABLE"), MUSIC_EXP("MUSIC_EXP"),
-        TAX_RELATED("TAX_RELATED"), DUPLICATE("DUPLICATE"), DONATION("DONATION"), MUSIC_RELATED("MUSIC_RELATED"),
-        IMPULSIVE("IMPULSIVE");
+        VACATION("VACATION"), ALTHEA_EXP("ALTHEA_EXP"),
+        REIMBURSABLE("REIMBURSABLE"), MUSIC_EXP("MUSIC_EXP"),
+        TAX_RELATED("TAX_RELATED"), DONATION("DONATION"), MUSIC_RELATED("MUSIC_RELATED");
 
         private final String value;
 
@@ -176,6 +176,25 @@ public class Transaction {
 
     public String getOrigType() {
         return origType;
+    }
+
+    public boolean matchesQuarter(String qtr) {
+        if (date == null) {
+            return false;
+        }
+        int month = date.get(Calendar.MONTH);
+
+        if ("Q1".equals(qtr)) {
+            return month == 0 || month == 1 || month == 2;
+        } else if ("Q2".equals(qtr)) {
+            return month == 3 || month == 4 || month == 5;
+        } else if ("Q3".equals(qtr)) {
+            return month == 6 || month == 7 || month == 8;
+        } else if ("Q4".equals(qtr)) {
+            return month == 9 || month == 10 || month == 11;
+        } else {
+            throw new IllegalArgumentException("Bad input Quarter value: " + qtr);
+        }
     }
 
     @Override

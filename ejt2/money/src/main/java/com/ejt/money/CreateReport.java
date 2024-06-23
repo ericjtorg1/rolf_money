@@ -16,8 +16,8 @@ public class CreateReport {
 
     public static void main(String[] args) throws Exception {
 
-        if (args.length != 1 && args.length != 2) {
-            System.err.println("Usage: " + CreateReport.class.getName() + " <year> {export}");
+        if (args.length != 1) {
+            System.err.println("Usage: " + CreateReport.class.getName() + " <year>");
             System.exit(1);
         }
         String mintFilesFolder = PropertyManager.getString("mint.files.folder", null);

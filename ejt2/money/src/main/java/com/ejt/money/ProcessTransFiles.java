@@ -23,11 +23,15 @@ public class ProcessTransFiles {
         logger.info("year is " + year);
         String acctTransFilesFolder = PropertyManager.getString("account_trans.files.folder", null);
         acctTransFilesFolder = StringUtils.replace(acctTransFilesFolder, "{YEAR}", year);
+        String programCode = PropertyManager.getString("program.code", "E");
 
         List<TransRule> transRules = createTransRules();
         List<Transaction> transactions = new ArrayList<>();
 
         for (AccountEnum acct : AccountEnum.values()) {
+            if (!acct.getCodes().contains(programCode)) {
+                continue;
+            }
             logger.info("Process file " + acct.getFile() + " for " + acct.name());
 
             List<Transaction> acctTransList = acct.getProcFile().process(acctTransFilesFolder + acct.getFile(), transRules);
