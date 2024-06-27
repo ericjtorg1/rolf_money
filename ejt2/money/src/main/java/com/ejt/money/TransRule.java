@@ -12,6 +12,8 @@ public class TransRule {
     private boolean debit = true;
     private AccountEnum account;
     private boolean needsComment = false;
+    private boolean needsTag = false;
+    private boolean needsFrom = false;
 
     public String getId() {
         return id;
@@ -54,7 +56,11 @@ public class TransRule {
     }
 
     public boolean isDebit() {
-        return debit;
+        return debit && !"Transfer".equals(category);
+    }
+
+    public boolean isCredit() {
+        return !debit && !"Transfer".equals(category);
     }
 
     public void setDebit(boolean debit) {
@@ -75,6 +81,22 @@ public class TransRule {
 
     public void setNeedsComment(boolean needsComment) {
         this.needsComment = needsComment;
+    }
+
+    public boolean isNeedsTag() {
+        return needsTag;
+    }
+
+    public void setNeedsTag(boolean needsTag) {
+        this.needsTag = needsTag;
+    }
+
+    public boolean isNeedsFrom() {
+        return needsFrom;
+    }
+
+    public void setNeedsFrom(boolean needsFrom) {
+        this.needsFrom = needsFrom;
     }
 
     @Override

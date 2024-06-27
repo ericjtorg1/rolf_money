@@ -16,9 +16,13 @@ public class MintUtils {
         if (amount == null) {
             throw new Exception("amount is null");
         }
+        int start = 0;
+        if (amount.startsWith("$")) {
+            start = 1;
+        }
         StringBuffer sb = new StringBuffer();
         int leng = amount.length();
-        for (int i = 0; i < leng; i++) {
+        for (int i = start; i < leng; i++) {
             String str = amount.substring(i, i + 1);
             if (StringUtils.isBlank(str) || ".".equals(str) || ",".equals(str)) {
                 continue;
@@ -264,6 +268,19 @@ public class MintUtils {
         transRule.setTags(getPropValue(propName + ".tags"));
         transRule.setDebit(Util.getBoolean(getPropValue(propName + ".debit"), true));
         transRule.setNeedsComment(Util.getBoolean(getPropValue(propName + ".needsComment"), false));
+        transRule.setNeedsTag(Util.getBoolean(getPropValue(propName + ".needsTag"), false));
+        transRule.setNeedsFrom(Util.getBoolean(getPropValue(propName + ".needsFrom"), false));
+
+        if (transRule.getTags() != null) {
+            String[] tags = StringUtils.split(transRule.getTags(), ',');
+            for (String tag : tags) {
+                try {
+                    Transaction.Tag.determineTag(tag);
+                } catch (Exception e) {
+                    throw new RuntimeException("Bad Tag value " + tag + " for trans.rule." + id);
+                }
+            }
+        }
 
         String account = getPropValue(propName + ".account");
         if (account != null) {

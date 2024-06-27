@@ -9,17 +9,13 @@ import java.util.List;
 
 public class FindTransactions {
     public static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(FindTransactions.class);
-    private String year;
 
     public static void main(String[] args) throws Exception {
 
-        if (args.length != 4) {
-            System.err.println("Usage: " + FindTransactions.class.getName() + " <year> <E/I> <group> <quarter>");
+        if (args.length != 5) {
+            System.err.println("Usage: " + FindTransactions.class.getName() + " <year> <E/I> <group> <quarter> <run-code>");
             System.exit(1);
         }
-        String mintFilesFolder = PropertyManager.getString("mint.files.folder", null);
-        logger.debug("mintFilesFolder is " + mintFilesFolder);
-
         String year = args[0];
         logger.debug("year is " + year);
 
@@ -43,6 +39,12 @@ public class FindTransactions {
             System.err.println("Argument 4 must be Q1 or Q2 or Q3 or Q4");
             System.exit(1);
         }
+
+        String runCode = args[4];
+        logger.info("run-code is " + runCode);
+
+        String mintFilesFolder = PropertyManager.getString("mint.files.folder." + runCode, null);
+        logger.debug("mintFilesFolder is " + mintFilesFolder);
 
         String group = args[2];
         logger.debug("group is " + group);

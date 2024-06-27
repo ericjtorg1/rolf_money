@@ -4,32 +4,38 @@ import com.ejt.util.PropertyManager;
 import com.ejt.util.Util;
 import org.apache.commons.lang3.StringUtils;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class ProcessTransFiles {
-
     public static org.apache.log4j.Logger logger = org.apache.log4j.Logger.getLogger(ProcessTransFiles.class);
+
+    public static Set<String> EXP_CATEGS = new HashSet<>(), INC_CATEGS = new HashSet<>();
+
 
     public static void main(String[] args) {
 
-        if (args.length != 1) {
-            System.out.println("Usage: " + ProcessTransFiles.class.getName() + " <year>");
+        if (args.length != 2) {
+            System.out.println("Usage: " + ProcessTransFiles.class.getName() + " <year> <run-code>");
             System.exit(1);
         }
         String year = args[0];
         logger.info("year is " + year);
-        String acctTransFilesFolder = PropertyManager.getString("account_trans.files.folder", null);
+
+        String runCode = args[1];
+        logger.info("run-code is " + runCode);
+
+        String acctTransFilesFolder = PropertyManager.getString("account_trans.files.folder." + runCode, null);
         acctTransFilesFolder = StringUtils.replace(acctTransFilesFolder, "{YEAR}", year);
-        String programCode = PropertyManager.getString("program.code", "E");
+        String accountCode = PropertyManager.getString("account.code." + runCode, null);
+        logger.info("account-code is " + accountCode);
+
+        readInCategories(accountCode);
 
         List<TransRule> transRules = createTransRules();
         List<Transaction> transactions = new ArrayList<>();
 
         for (AccountEnum acct : AccountEnum.values()) {
-            if (!acct.getCodes().contains(programCode)) {
+            if (!acct.getCodes().contains(accountCode)) {
                 continue;
             }
             logger.info("Process file " + acct.getFile() + " for " + acct.name());
@@ -48,7 +54,7 @@ public class ProcessTransFiles {
         for (Transaction t : transactions) {
             transLines.add(t.toString(false));
         }
-        Util.writeFile(PropertyManager.getString("mint.files.folder", null) + year + "_trans.list", transLines);
+        Util.writeFile(PropertyManager.getString("mint.files.folder." + runCode, null) + year + "_trans.list", transLines);
     }
 
     private static List<TransRule> createTransRules() {
@@ -76,4 +82,42 @@ public class ProcessTransFiles {
     }
 
 
+    private static void readInCategories(String accountCode) {
+        String moneyDataFile = PropertyManager.getString("money.data.file." + accountCode, null);
+        if (moneyDataFile == null) {
+            return;
+        }
+        List<String> lines = Util.readFile(moneyDataFile);
+        boolean insideExp = false, insideInc = false;
+
+        for (String line : lines) {
+            if (StringUtils.isBlank(line)) {
+                continue;
+            }
+            if (line.startsWith("Expense Categories")) {
+                insideExp = true;
+                continue;
+            }
+            if (line.startsWith("Income Categories")) {
+                insideInc = true;
+                continue;
+            }
+            if (line.startsWith("^^^")) {
+                insideExp = false;
+                insideInc = false;
+                continue;
+            }
+            if (line.startsWith("***")) {
+                continue;
+            }
+            if (insideExp) {
+                EXP_CATEGS.add(StringUtils.trim(line));
+                continue;
+            }
+            if (insideInc) {
+                INC_CATEGS.add(StringUtils.trim(line));
+                continue;
+            }
+        }
+    }
 }

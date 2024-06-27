@@ -48,16 +48,27 @@ public abstract class ProcessTransFile {
 
         if (transRecord.isUseFrom()) {
             trans.setDescription(transRecord.getDescription());
-            if (transRecord.getNotDebit() == null) {
-                trans.setType(Transaction.Type.EXPENSE);
-            }
 
         } else {
             rule_loop:
             for (TransRule rule : transRules) {
+                logger.debug("Have trans.rule." + rule.getId());
                 if (rule.getAccount() != null && rule.getAccount() != transRecord.getAccount()) {
                     continue;
                 }
+                if (rule.isDebit() && transRecord.isDebitNegativeAmt() && !transRecord.isAmtNegative()) {
+                    continue;
+                }
+                if (rule.isDebit() && !transRecord.isDebitNegativeAmt() && transRecord.isAmtNegative()) {
+                    continue;
+                }
+                if (rule.isCredit() && transRecord.isDebitNegativeAmt() && transRecord.isAmtNegative()) {
+                    continue;
+                }
+                if (rule.isCredit() && !transRecord.isDebitNegativeAmt() && !transRecord.isAmtNegative()) {
+                    continue;
+                }
+                logger.debug("Trying trans.rule." + rule.getId());
                 for (String token : rule.getMatches()) {
                     int ruleIdx = StringUtils.indexOf(transRecord.getDescription(), token);
                     if (ruleIdx >= 0) {
@@ -109,6 +120,20 @@ public abstract class ProcessTransFile {
             trans.setType(match.isDebit() ? Transaction.Type.EXPENSE : Transaction.Type.INCOME);
         }
         if (trans.getType() == null) {
+            if (transRecord.isAmtNegative() && transRecord.isDebitNegativeAmt()) {
+                trans.setType(Transaction.Type.EXPENSE);
+
+            } else if (!transRecord.isAmtNegative() && transRecord.isDebitNegativeAmt()) {
+                trans.setType(Transaction.Type.INCOME);
+
+            } else if (transRecord.isAmtNegative() && !transRecord.isDebitNegativeAmt()) {
+                trans.setType(Transaction.Type.INCOME);
+
+            } else if (!transRecord.isAmtNegative() && !transRecord.isDebitNegativeAmt()) {
+                trans.setType(Transaction.Type.EXPENSE);
+            }
+        }
+        if (trans.getType() == null) {
             throw new BadRecordException("no trans-type determined");
         }
 
@@ -141,6 +166,16 @@ public abstract class ProcessTransFile {
         } else if (match != null && match.getTags() != null) {
             trans.addTags(match.getTags());
         }
+
+        if (match != null && match.isNeedsTag() && trans.getTags().
+
+                isEmpty()) {
+            throw new BadRecordException("some tag required");
+        }
+        if (match != null && match.isNeedsFrom() && !transRecord.isUseFrom()) {
+            throw new BadRecordException("must enter From field and add USE-FROM");
+        }
+
         return trans;
     }
 

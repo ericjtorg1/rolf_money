@@ -543,7 +543,7 @@ public class Util {
     }
 
     public static List<String> convertToStringList(String value, String delim) {
-        List<String> list = new ArrayList<String>();
+        List<String> list = new ArrayList<>();
         if (StringUtils.isBlank(value)) {
             return list;
         }

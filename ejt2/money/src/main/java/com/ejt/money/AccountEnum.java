@@ -14,7 +14,14 @@ public enum AccountEnum {
     CITI_MC("Citi MC", "citi-mc.txt", new ProcessCitiMC(), "E"),
     WF_CHK("Wells Fargo Checking", "wf-checking.txt", new ProcWellsFargoCheck(), "E"),
     WF_VISA("Wells Fargo VISA", "wf-visa.txt", new ProcWellsFargoVisa(), "E"),
-    WF_ROLF("Spark VISA", "spark-visa.txt", new ProcWellsFargoVisa(), "R");
+    // Rolf Accounts
+    SWB_PERS("Schwab Personal", "swb-pers-chk.txt", new ProcSchwabPersonal(), "R"),
+    SWB_WCFT("Schwab Westcraft", "swb-wcft-chk.txt", new ProcSchwabWestcraft(), "R"),
+    SWB_GV("Schwab Grandview", "swb-gv-chk.txt", new ProcSchwabGrandview(), "R"),
+    USB_PERS("USBank Personal", "usb-pers-chk.txt", new ProcUSBankPersonal(), "R"),
+    USB_WCFT("USBank Westcraft", "usb-wcft-chk.txt", new ProcUSBankWestcraft(), "R"),
+    USB_VISA("USBank VISA", "usb-visa.txt", new ProcUSBankVisa(), "R"),
+    SPRK_VISA("Spark VISA", "spark-visa.txt", new ProcSparkVisa(), "R");
 
     private String tag, file;
     private ProcessTransFile procFile;

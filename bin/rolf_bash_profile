@@ -10,7 +10,7 @@ alias gotrans='cd $HOME/Desktop/rolf_money/ejt2/money/src/main/resources/mint'
 alias godown='cd $HOME/Desktop/rolf_money/Money/2024_Statements/trans-files/'
 alias goutil='cd $HOME/Desktop/rolf_money/ejt2/util'
 alias gomoney='cd $HOME/Desktop/rolf_money/ejt2/money'
-alias m24='mint_proctransfiles.sh 2024'
+alias rolf24='mint_proctransfiles.sh 2024 R'
 
 alias kj='killjava.sh'
 alias pj='ps aux | grep java | grep -v grep'
