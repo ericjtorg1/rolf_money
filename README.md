@@ -31,6 +31,10 @@ JONES_BTH24
 
 Expense Categories
 ******************
+Labor
+Materials
+Supplies
+
 Water
 Garbage
 Legal
@@ -53,9 +57,7 @@ Small-Tools
 Large-Tools
 Tool-Repairs
 
-Labor
-Materials
-Supplies
+
 
 Auto-Maintenance
 Auto-Repairs
@@ -87,14 +89,12 @@ Donations
 
 Income Categories
 *****************
-Returns
-Refund
-
 Job-Income
 Rental-Income
 
+Returns
+Refund
 Tax-Refund
-
 
 Investments
 Interest
